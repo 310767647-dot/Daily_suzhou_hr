@@ -1,0 +1,23 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+*.egg
+dist/
+build/
+
+# Reasonix
+.reasonix/
+
+# Output (缓存和报告)
+output/*.json
+# 如需保留 output 目录本身
+!output/.gitkeep
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~

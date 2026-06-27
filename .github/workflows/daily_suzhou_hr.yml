@@ -1,0 +1,44 @@
+name: Suzhou HR Daily Dispatch
+
+on:
+  workflow_dispatch:      # 由 cron-job.org 通过 GitHub API 触发
+    inputs:
+      dry_run:
+        description: 'Dry run (不推送飞书)'
+        required: false
+        default: 'false'
+
+jobs:
+  daily-scan:
+    name: Scan & Dispatch
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - name: Install dependencies
+        run: |
+          pip install -r scripts/requirements.txt
+
+      - name: Run main script
+        env:
+          FEISHU_WEBHOOK: ${{ secrets.FEISHU_WEBHOOK }}
+          TZ: 'Asia/Shanghai'
+        run: |
+          python scripts/daily_suzhou_hr.py
+
+      - name: Upload report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: suzhou-hr-report-$(date +'%Y-%m-%d')
+          path: output/
+          retention-days: 7
