@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-苏州人社 · 每日信息速递
+苏州人社 · 工信 · 每日信息速递
 =========================
 功能：
   1. 每天收集苏州人力资源和社会保障局官网相关信息
@@ -504,7 +504,7 @@ def send_feishu_card(date_str, grouped_articles, total_found, total_new):
     card = {
         "config": {"wide_screen_mode": True},
         "header": {
-            "title": {"tag": "plain_text", "content": "🏛️ 苏州人社 · 每日信息速递"},
+            "title": {"tag": "plain_text", "content": "🏛️ 苏州人社 · 工信 · 每日信息速递"},
             "template": "blue",
         },
         "elements": elements,
@@ -558,7 +558,7 @@ def save_daily_report(date_str, all_articles, relevant_articles):
 
 def main():
     print("=" * 55)
-    print("  苏州人社 · 每日信息速递")
+    print("  苏州人社 · 工信 · 每日信息速递")
     print("=" * 55)
 
     today = datetime.date.today()
@@ -660,7 +660,7 @@ def no_update_card(date_str):
     card = {
         "config": {"wide_screen_mode": True},
         "header": {
-            "title": {"tag": "plain_text", "content": "🏛️ 苏州人社 · 每日信息速递"},
+            "title": {"tag": "plain_text", "content": "🏛️ 苏州人社 · 工信 · 每日信息速递"},
             "template": "blue",
         },
         "elements": [
