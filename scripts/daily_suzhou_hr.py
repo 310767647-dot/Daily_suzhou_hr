@@ -40,6 +40,7 @@ BASE_URL = "http://hrss.suzhou.gov.cn"
 
 # 监控栏目配置（名称, 列表页URL, 文章链接前缀, 分类标签）
 SECTIONS = [
+    # ── 苏州人社局 ──
     {
         "name": "人社要闻",
         "list_url": "http://hrss.suzhou.gov.cn/jsszhrss/zxdt/list.shtml",
@@ -70,6 +71,19 @@ SECTIONS = [
         "link_prefix": "/jsszhrss/rsgl/",
         "icon": "👥",
     },
+    # ── 苏州工信局 ──
+    {
+        "name": "工信动态",
+        "list_url": "http://gxj.suzhou.gov.cn/szeic/szgxdt/common_list.shtml",
+        "link_prefix": "/szeic/szgxdt/",
+        "icon": "🏭",
+    },
+    {
+        "name": "新闻动态",
+        "list_url": "http://gxj.suzhou.gov.cn/szeic/xwdt/xwzx.shtml",
+        "link_prefix": "/szeic/xwdt/",
+        "icon": "📡",
+    },
 ]
 
 # ── AI / 技能培训 关键词 ──
@@ -80,6 +94,11 @@ AI_KEYWORDS = [
     "信息化", "自动化", "机器人", "人形机器人", "无人机",
     "编程", "代码", "软件", "互联网+", "区块链", "物联网",
     "5G", "6G", "芯片", "半导体",
+    # 工信领域拓展
+    "工业互联网", "智能制造", "集成电路", "RISC-V",
+    "新能源", "智能网联", "新能源汽车", "产业链",
+    "绿色制造", "产业创新", "新型工业化", "先进制造",
+    "专精特新", "数字经济", "信创", "软件产业",
 ]
 
 SKILLS_KEYWORDS = [
@@ -90,6 +109,9 @@ SKILLS_KEYWORDS = [
     "就业", "招聘", "双选", "见习", "实训",
     "职业技能", "职业资格", "职称", "技能等级",
     "技术", "工艺", "工匠",
+    # 工信领域拓展
+    "对接会", "推进会", "交流会", "宣讲会",
+    "产业集群", "产业链", "生态", "赋能",
 ]
 
 # 组合为完整关键词列表
@@ -475,7 +497,7 @@ def send_feishu_card(date_str, grouped_articles, total_found, total_new):
     elements.append({
         "tag": "note",
         "elements": [
-            {"tag": "plain_text", "content": "数据来源：苏州市人力资源和社会保障局官网 · 搜狗微信搜索 | 每日8:30更新"}
+            {"tag": "plain_text", "content": "数据来源：苏州市人社局 · 苏州市工信局 · 搜狗微信搜索 | 每日8:30更新"}
         ],
     })
 
@@ -647,7 +669,7 @@ def no_update_card(date_str):
             {
                 "tag": "note",
                 "elements": [
-                    {"tag": "plain_text", "content": "数据来源：苏州市人力资源和社会保障局官网 · 搜狗微信搜索 | 每日8:30更新"}
+                    {"tag": "plain_text", "content": "数据来源：苏州市人社局 · 苏州市工信局 · 搜狗微信搜索 | 每日8:30更新"}
                 ],
             },
         ],
